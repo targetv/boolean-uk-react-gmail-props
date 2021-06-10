@@ -34,10 +34,10 @@ function Header(props) {
         onSubmit={e => {
           e.preventDefault()
           if (emailFilterInput.length > 0) {
-            const test = props.emails.filter(
+            const filteredEmails = props.emails.filter(
               email => email.title === emailFilterInput
             )
-            props.setEmails(test)
+            props.setEmails(filteredEmails)
             setFilterInput('')
           } else {
             props.setEmails(props.initialEmails)
