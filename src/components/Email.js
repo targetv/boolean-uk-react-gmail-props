@@ -1,7 +1,7 @@
 function Email(props) {
   return (
     <li
-      key={props.index}
+      key={props.email.index}
       className={`email ${props.email.read ? 'read' : 'unread'}`}
     >
       <div className="select">

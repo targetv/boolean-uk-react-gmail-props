@@ -11,6 +11,7 @@ function App() {
   const [emails, setEmails] = useState(initialEmails)
   const [hideRead, setHideRead] = useState(false)
   const [currentTab, setCurrentTab] = useState('inbox')
+  const [emailFilterInput, setFilterInput] = useState('')
 
   // New array loop
 
@@ -27,12 +28,18 @@ function App() {
   if (currentTab === 'starred')
     filteredEmails = getStarredEmails(filteredEmails)
 
+  if (emailFilterInput) {
+    filteredEmails = filteredEmails.filter(email =>
+      email.title.toLowerCase().includes(emailFilterInput.toLowerCase())
+    )
+  }
+
   return (
     <div className="app">
       <Header
         emails={emails}
-        setEmails={setEmails}
-        initialEmails={initialEmails}
+        setFilterInput={setFilterInput}
+        emailFilterInput={emailFilterInput}
       />
       <Nav
         emails={emails}

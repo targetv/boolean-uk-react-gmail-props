@@ -1,8 +1,6 @@
 import { useState } from 'react'
 
 function Header(props) {
-  const [emailFilterInput, setFilterInput] = useState('')
-
   // function emailFilter(targetEmail) {
   //   const updatedArray = []
 
@@ -31,24 +29,25 @@ function Header(props) {
 
       <form
         className="search"
-        onSubmit={e => {
-          e.preventDefault()
-          if (emailFilterInput.length > 0) {
-            const filteredEmails = props.emails.filter(
-              email => email.title === emailFilterInput
-            )
-            props.setEmails(filteredEmails)
-            setFilterInput('')
-          } else {
-            props.setEmails(props.initialEmails)
-          }
-          setFilterInput('')
-        }}
+        // onSubmit={e => {
+        //   e.preventDefault()
+        //   if (emailFilterInput.length > 0) {
+        //     const filteredEmails = props.emails.filter(
+        //       email => email.title === emailFilterInput
+        //     )
+        //     props.setEmails(filteredEmails)
+        //     setFilterInput('')
+        //   } else {
+        //     props.setEmails(props.initialEmails)
+        //   }
+        //   setFilterInput('')
+        // }}
       >
         <input
           className="search-bar"
           placeholder="Search mail"
-          onChange={e => setFilterInput(e.target.value)}
+          value={props.emailFilterInput}
+          onChange={e => props.setFilterInput(e.target.value)}
         />
       </form>
     </header>
